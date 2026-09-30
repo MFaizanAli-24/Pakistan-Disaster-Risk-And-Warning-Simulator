@@ -1,5 +1,3 @@
-
-
 from risk_prediction_engine import calculate_flood_risk, calculate_drought_risk, calculate_earthquake_risk
 from utils import generate_unique_id
 from storage import save_assessment_results
