@@ -1,8 +1,8 @@
 RISK_LEVELS = [
-    (0,2,"Low"),
-    (3,5,"Medium"),
-    (6,8,"High"),
-    (9,100,"Critical")
+    (0,1,"Low"),
+    (2,3,"Medium"),
+    (4,5,"High"),
+    (6,8,"Critical")
 ]
 
 def classify_risk(score):
