@@ -1,68 +1,57 @@
 # PakAlert
+### Pakistan Disaster Risk & Warning Simulator
 
-PakAlert is a Python-based educational disaster risk simulator that assesses flood, drought, and earthquake-related risk using simple environmental inputs.
+PakAlert is a Python-based educational disaster-risk simulator that converts environmental observations into simple, explainable risk assessments.
 
-The program uses a rule-based scoring system to identify important risk factors and explain why a certain score was given.
+The project currently supports flood, drought, and earthquake-related assessments. Rather than using machine learning or presenting itself as a real forecasting system, PakAlert uses transparent rule-based algorithms so that every result can be traced back to the conditions that produced it.
 
-## Features
+## Why I Built It
+
+Disaster warnings are often based on several environmental factors rather than a single measurement.
+
+PakAlert explores how a computer program can take multiple inputs, apply a structured decision-making process, and produce an understandable result.
+
+The main goal was to build a project where the logic remains visible instead of simply returning a prediction with no explanation.
+
+## Current Features
 
 - Flood risk assessment
 - Drought risk assessment
 - Earthquake impact assessment
-- Explainable scoring system
+- Rule-based scoring system
+- Low, Moderate, High, and Critical risk classification
+- Explanation of contributing risk factors
+- District/location recording
+- Automatic timestamps
 - Unique assessment IDs
-- District/location input
-- Automatic date and time recording
-- JSON-based data storage
-- View previous assessments
+- JSON-based assessment history
+- Ability to view previous assessments
 
 ## How It Works
 
-The user selects a type of assessment and enters the required environmental values.
+Each assessment uses different environmental inputs.
 
-For example, flood assessment uses:
+For example, the flood assessment considers:
 
-- Rainfall
+- Recent rainfall
 - River level
 - Soil saturation
 
-The program checks the values against predefined rules, calculates a score, assigns a risk level, and explains which factors contributed to the result.
+Each condition is checked against predefined thresholds.
 
-## Project Structure
+If a condition indicates greater risk, points are added to the total score.
 
-`main.py`  
-Runs the main menu and connects the different parts of the program.
+Example:
 
-`assessment_executors.py`  
-Collects user input and performs each assessment.
+```text
+Rainfall: 300 mm
+River Level: 20 m
+Soil Saturation: 100%
 
-`risk_prediction_engine.py`  
-Contains the scoring rules for flood, drought, and earthquake assessments.
+Risk Score: 8
+Risk Level: Critical
 
-`risk_classifier.py`  
-Converts numerical scores into risk levels.
-
-`storage.py`  
-Handles saving and loading assessment records.
-
-`utils.py`  
-Contains reusable functions such as JSON handling and unique ID generation.
-
-`data/assessment_results.json`  
-Stores completed assessment records.
-
-## Technologies Used
-
-- Python
-- JSON
-- UUID
-- File handling
-- Functions and modules
-- Lists and dictionaries
-- Conditional statements
-
-## Purpose
-
-PakAlert was created as an A-Level Computer Science project to explore how software can use environmental inputs to produce simple and explainable risk assessments.
-
-The project is intended for educational purposes only and should not be used as an official disaster forecasting or warning system.
+Reasons:
+- Heavy rainfall
+- High river level
+- High soil saturation
