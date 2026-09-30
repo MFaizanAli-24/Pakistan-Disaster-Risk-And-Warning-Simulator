@@ -1,6 +1,19 @@
 import json
 import uuid
 
+def get_valid_float(prompt, minimum, maximum):
+    while True:
+        try:
+            value = float(input(prompt))
+
+            if minimum <= value <= maximum:
+                return value
+
+            print(f"Please enter a value between {minimum} and {maximum}.")
+
+        except ValueError:
+            print("Please enter a valid number.")
+            
 def generate_unique_id():
     return str(uuid.uuid4())
 
