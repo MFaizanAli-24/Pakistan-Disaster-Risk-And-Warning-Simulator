@@ -43,15 +43,100 @@ If a condition indicates greater risk, points are added to the total score.
 
 Example:
 
-```text
-Rainfall: 300 mm
-River Level: 20 m
+Rainfall: 300 mm  
+River Level: 20 m  
 Soil Saturation: 100%
 
-Risk Score: 8
+Risk Score: 8  
 Risk Level: Critical
 
 Reasons:
 - Heavy rainfall
 - High river level
 - High soil saturation
+
+This makes the result explainable because the user can see exactly which conditions affected the score.
+
+## Project Architecture
+
+PakAlert/
+- main.py
+- assessment_executors.py
+- risk_prediction_engine.py
+- risk_classifier.py
+- storage.py
+- utils.py
+- data/
+  - assessment_results.json
+
+### main.py
+Controls the main program menu.
+
+### assessment_executors.py
+Collects user inputs and creates assessment records.
+
+### risk_prediction_engine.py
+Contains the scoring rules for each assessment.
+
+### risk_classifier.py
+Converts numerical scores into understandable risk levels.
+
+### storage.py
+Handles saving and loading assessment records.
+
+### utils.py
+Contains reusable functions such as UUID generation and JSON handling.
+
+## Data Storage
+
+Completed assessments are stored in JSON format.
+
+Example:
+
+{
+    "assessment_type": "Flood",
+    "district": "Lahore",
+    "rainfall_mm": 300,
+    "river_level_m": 20,
+    "soil_saturation": 100,
+    "score": 8,
+    "risk_level": "Critical"
+}
+
+## Design Approach
+
+PakAlert intentionally uses a rule-based model rather than machine learning.
+
+This keeps the project:
+
+- Understandable
+- Transparent
+- Easy to test
+- Appropriate for the current stage of development
+
+The scoring thresholds are part of an educational simulation and should not be treated as scientifically validated forecasting thresholds.
+
+## Limitations
+
+PakAlert is not connected to live weather, river, seismic, or government warning data.
+
+It should therefore not be used for real disaster prediction or emergency decisions.
+
+The earthquake component evaluates conditions associated with an earthquake event rather than predicting when an earthquake will occur.
+
+## Future Improvements
+
+Possible future versions could include:
+
+- Search assessments by district
+- Search by assessment ID
+- Sort assessments by date or risk level
+- Graphical interface
+- Real environmental datasets
+- Weather or disaster-data APIs
+- Improved scientifically sourced thresholds
+- Visual risk dashboards
+
+## Purpose
+
+PakAlert was developed as an A-Level Computer Science passion project to explore how Python can be used to model real-world decision-making problems using transparent and explainable algorithms.
