@@ -7,8 +7,12 @@ from risk_prediction_engine import (
 
 from utils import generate_unique_id, get_valid_float
 from storage import save_assessment_results
+from datetime import datetime
 
 def perform_drought_risk_assessment():
+
+    district = input("Enter district/location: ").strip()
+    
     temperature_c = get_valid_float(
       "Enter temperature in Celsius (0-50): ",
       0,
@@ -39,10 +43,13 @@ def perform_drought_risk_assessment():
         print(f"- {reason}")
 
     record = {
-        "type" : f"D-{generate_unique_id()}",
-        "temperature_c": temperature_c,
+        "assessment_id": generate_unique_id(),
+        "assessment_type": "Flood",
+        "district": district,
+        "date": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         "rainfall_mm": rainfall_mm,
-        "soil_moisture": soil_moisture,
+        "river_level_m": river_level_m,
+        "soil_saturation": soil_saturation,
         "score": score,
         "reasons": reasons
     }
@@ -50,6 +57,9 @@ def perform_drought_risk_assessment():
     save_assessment_results(record)
 
 def perform_earthquake_risk_assessment():
+
+    district = input("Enter district/location: ").strip()
+    
     magnitude = get_valid_float(
       "Enter earthquake magnitude (0-10): ",
       0,
@@ -79,7 +89,10 @@ def perform_earthquake_risk_assessment():
         reasons.append("No significant earthquake risk factors detected.")
     
     record = {
-        "type" : f"E-{generate_unique_id()}",
+        "assessment_id": generate_unique_id(),
+        "assessment_type": "Drought",
+        "district": district,
+        "date": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         "magnitude": magnitude,
         "depth_km": depth_km,
         "distance_from_epicenter_km": distance_from_epicenter_km,
@@ -90,6 +103,9 @@ def perform_earthquake_risk_assessment():
     save_assessment_results(record)
 
 def perform_flood_risk_assessment():
+
+    district = input("Enter district/location: ").strip()
+    
     rainfall_mm = get_valid_float(
       "Enter rainfall in mm (0-300): ",
       0,
@@ -125,7 +141,11 @@ risk_level = classify_risk(score)
         reasons.append("No significant flood risk factors detected.")
 
     record = {
-        "type" : f"F-{generate_unique_id()}",
+        record = {
+        "assessment_id": generate_unique_id(),
+        "assessment_type": "Earthquake",
+        "district": district,
+        "date": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         "rainfall_mm": rainfall_mm,
         "river_level_m": river_level_m,
         "soil_saturation": soil_saturation,
