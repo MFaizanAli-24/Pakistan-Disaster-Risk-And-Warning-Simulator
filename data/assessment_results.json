@@ -1,10 +1,14 @@
 [
     {
-        "type": "F-47cd189b-1e4f-4e5f-9021-482e1b0ffffb",
+        "assessment_id": "47cd189b-1e4f-4e5f-9021-482e1b0ffffb",
+        "assessment_type": "Flood",
+        "district": "Lahore",
+        "date": "2026-09-30 10:30:12",
         "rainfall_mm": 300.0,
         "river_level_m": 20.0,
         "soil_saturation": 100.0,
         "score": 8,
+        "risk_level": "Critical",
         "reasons": [
             "Heavy rainfall",
             "High river level",
@@ -12,11 +16,15 @@
         ]
     },
     {
-        "type": "D-dec7962d-46ac-4a13-a31c-525f98689da0",
+        "assessment_id": "dec7962d-46ac-4a13-a31c-525f98689da0",
+        "assessment_type": "Drought",
+        "district": "Multan",
+        "date": "2026-09-30 11:15:40",
         "temperature_c": 50.0,
         "rainfall_mm": 200.0,
         "soil_moisture": 100.0,
         "score": 3,
+        "risk_level": "Moderate",
         "reasons": [
             "High temperature"
         ]
